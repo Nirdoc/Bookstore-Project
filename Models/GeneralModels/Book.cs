@@ -20,11 +20,11 @@ namespace Bookstore.Models
         public int stock { get; set; }
 
         //One-to-Many relation
-        public int authorId { get; set; }
+        //public int authorId { get; set; }
         public Author author { get; set; }
 
         //One-to-Many relation
-        public int publisherId { get; set; }
+        //public int publisherId { get; set; }
 
         public Publisher publisher { get; set; }
 

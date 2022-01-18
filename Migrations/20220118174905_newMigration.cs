@@ -71,8 +71,8 @@ namespace Bookstore.Migrations
                     description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     price = table.Column<double>(type: "float", nullable: false),
                     stock = table.Column<int>(type: "int", nullable: false),
-                    authorId = table.Column<int>(type: "int", nullable: false),
-                    publisherId = table.Column<int>(type: "int", nullable: false)
+                    authorId = table.Column<int>(type: "int", nullable: true),
+                    publisherId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,13 +82,13 @@ namespace Bookstore.Migrations
                         column: x => x.authorId,
                         principalTable: "authors",
                         principalColumn: "authorId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_books_publishers_publisherId",
                         column: x => x.publisherId,
                         principalTable: "publishers",
                         principalColumn: "publisherId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

@@ -62,7 +62,7 @@ namespace Bookstore.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("authorId")
+                    b.Property<int?>("authorId")
                         .HasColumnType("int");
 
                     b.Property<string>("description")
@@ -74,7 +74,7 @@ namespace Bookstore.Migrations
                     b.Property<double>("price")
                         .HasColumnType("float");
 
-                    b.Property<int>("publisherId")
+                    b.Property<int?>("publisherId")
                         .HasColumnType("int");
 
                     b.Property<int>("stock")
@@ -215,16 +215,12 @@ namespace Bookstore.Migrations
             modelBuilder.Entity("Bookstore.Models.Book", b =>
                 {
                     b.HasOne("Bookstore.Models.Author", "author")
-                        .WithMany("books")
-                        .HasForeignKey("authorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("authorId");
 
                     b.HasOne("Bookstore.Models.Publisher", "publisher")
-                        .WithMany("books")
-                        .HasForeignKey("publisherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("publisherId");
 
                     b.Navigation("author");
 
@@ -251,16 +247,6 @@ namespace Bookstore.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Bookstore.Models.Author", b =>
-                {
-                    b.Navigation("books");
-                });
-
-            modelBuilder.Entity("Bookstore.Models.Publisher", b =>
-                {
-                    b.Navigation("books");
                 });
 
             modelBuilder.Entity("Bookstore.Models.UserModels.Role", b =>

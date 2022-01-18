@@ -12,7 +12,7 @@ namespace Bookstore.Models
         public string name { get; set; }
 
         // a publisher can contain more books
-        public virtual ICollection<Book> books { get; set; }
+        //public virtual ICollection<Book> books { get; set; }
 
     }
 }

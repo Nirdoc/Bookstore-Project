@@ -16,6 +16,6 @@ namespace Bookstore.Models
 
         public DateTime yearOfDeath { get; set; }
 
-        public virtual ICollection<Book> books { get; set; }
+        //public virtual ICollection<Book> books { get; set; }
     }
 }
